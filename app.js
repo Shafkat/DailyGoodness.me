@@ -1,9 +1,11 @@
+
 var App = new Ext.Application({
     name: 'DailyGoodness',
     useLoadMask: true,
     launch: function () {
 
         var bottomTabs =  new Ext.TabPanel({
+			id: 'bottomTabs',
 			tabBar: {
 				dock: 'bottom',
 				ui: 'dark',
@@ -20,10 +22,10 @@ var App = new Ext.Application({
 			},
 			items: [{
 				xtype: 'textfield',
+				id: 'panel1',
 				title: 'More Good',
 				iconCls: 'star',
-				cls: 'card card1',
-				//onSelect: function() { alert('hey!'); }
+				cls: 'card card1'
 			},
 			{
 				xtype: 'textfield',
@@ -62,5 +64,11 @@ var App = new Ext.Application({
             cardAnimation: 'slide',
             items: [DailyGoodness.views.goodnessContainer]
         });
+        
+        //This piece of code can reroute to different pages.
+		//This code also required to handle clicks.
+		var el = Ext.get('bottomTabs');
+		el.on('click', function(){ document.location.href = 'http://www.fundraid.com'; });
+		
     }
 })
